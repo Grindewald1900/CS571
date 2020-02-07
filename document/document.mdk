@@ -19,8 +19,7 @@ WLU19@UBishops.ca
 &emsp;**(a)A simple graph with 5 vertices and 12 edges.**  
 
 &emsp;&emsp;&emsp; No, there doesn't exist such a graph.   
-
-&emsp;&emsp;&emsp; Proof：  
+&emsp;&emsp;&emsp; **Proof.**   
 &emsp;&emsp;&emsp; The complete graph K<sub>5</sub> has the most edges for a graph with 5 vertices.  
 The number of edges for K<sub>5</sub> is 10, which is less than 12.
 &emsp;&emsp;&emsp;<center> _e(K<sub>5</sub>) = (5 $\times$ 4)&nbsp;/&nbsp;2 = 10_ </center> 
@@ -28,18 +27,16 @@ The number of edges for K<sub>5</sub> is 10, which is less than 12.
 **&emsp;(b)A simple graph in which each vertex has degree 3 and which has exactly 6 edges.**
 
 &emsp;&emsp;&emsp; Yes, there does.   
-
-&emsp;&emsp;&emsp; Proof：  
+&emsp;&emsp;&emsp; **Proof.**  
 &emsp;&emsp;&emsp; Suppose that G = (V,E) has n vertices, according to The Handshaking Theorem:
-&emsp;&emsp;&emsp;<center> _2 $\times$ e &nbsp; =&nbsp; 3 $\times$ n_  </center>  
+&emsp;&emsp;&emsp;<center> _2 $\times$ e &nbsp; =&nbsp; 3 $\times$ n_  </center>
 &emsp;&emsp;&emsp; In this case,&ensp; e = 6 ,&ensp; n = 4.  
 &emsp;&emsp;&emsp; Actually, that is a 4 vertices complete graph.
 
 **&emsp;(c)A simple graph with five vertices with degrees 2, 3, 3, 3, and 2.**  
 
 &emsp;&emsp;&emsp; No, there doesn't exist such a graph.   
-
-&emsp;&emsp;&emsp; Proof：  
+&emsp;&emsp;&emsp; **Proof.**  
 &emsp;&emsp;&emsp; Suppose that graph G has 5 vertices with degrees 2, 3, 3, 3, and 2.  
 &emsp;&emsp;&emsp; The number of edges for G is 6.5,&ensp;which is not an integer,&ensp;and that is not possible.
 &emsp;&emsp;&emsp; <center> _e(G) = (2+2+3+3+3)/2 = 6.5 _ </center>   
@@ -52,18 +49,17 @@ The number of edges for K<sub>5</sub> is 10, which is less than 12.
 ### 2.Does there exist a simple graph G with 28 edges and 12 vertices, each of degree 3 or 4?
 
 &emsp;&emsp;&emsp; No, there doesn't exist such a graph.  
-
-&emsp;&emsp;&emsp; Proof：  
-&emsp;&emsp;&emsp; Suppose that G = (V,E) has 12 vertices, and every vertex has 4 degrees, the number of edges for graph G will be maximum.
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; Suppose that G = ( V, E ) has 12 vertices, and every vertex has 4 degrees, the number of edges for graph G will be maximum.
 &emsp;&emsp;&emsp;<center> _e(G)<sub>max</sub> = (12 $\times$ 4)/2 = 24 _  </center>  
 &emsp;&emsp;&emsp; Obviously , 28 is larger than 24，so it's impossible for graph G to have 28 edges.
-
+<br></br>  
+  
 ### 3.Does there exist a simple graph G with 28 edges and 12 vertices, each of degree 3 or 6?
 
 &emsp;&emsp;&emsp; No, there doesn't exist such a graph.  
-
-&emsp;&emsp;&emsp; Proof：  
-&emsp;&emsp;&emsp; Suppose that G = (V,E) has 12 vertices, and every vertex has 3 degrees, we can get the minimum number of edges for graph G .
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; Suppose that G = ( V, E ) has 12 vertices, and every vertex has 3 degrees, we can get the minimum number of edges for graph G .
 &emsp;&emsp;&emsp;<center> _e(G)<sub>min</sub> = (12 $\times$ 3)/2 = 18 _  </center>  
 &emsp;&emsp;&emsp; If every vertex has 6 degrees, we can get the maximum number of edges for graph G.
 &emsp;&emsp;&emsp;<center> _e(G)<sub>max</sub> = (12 $\times$ 6)/2 = 36 _  </center>  
@@ -72,12 +68,12 @@ The number of edges for K<sub>5</sub> is 10, which is less than 12.
 &emsp;&emsp;&emsp; Then suppose the number of vertices with 3 degrees is n, then the number of 6 degrees is (12 - n ).  
 &emsp;&emsp;&emsp;<center> _$\frac{3n + 6(12 - n)}{2}$ = 28_  </center>  
 &emsp;&emsp;&emsp; So n = $\frac{16}{3}$ , which is not an integer, thus there doesn't exist such a graph.
-
+<br></br>
 
 ### 4.Prove that a graph that contains a triangle cannot be bipartite.  
 
 &emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that G = (V,E),&ensp; v1,v2,v3 are the three vertices of the triangle, V<sub>1</sub> and V<sub>2</sub> are two disjoint sets partitioned from V.  
+&emsp;&emsp;&emsp; Suppose that G = ( V, E ),&ensp; v1,v2,v3 are the three vertices of the triangle, V<sub>1</sub> and V<sub>2</sub> are two disjoint sets partitioned from V.  
 &emsp;&emsp;&emsp; If all of the three vertices are in the same set :<center>&ensp;v1,v2,v3 $\in$ V<sub>1</sub></center>
 or <center>&ensp; v1,v2,v3 $\in$ V<sub>2</sub></center>
 &emsp;&emsp;&emsp; Graph G will not be bipartite, because any pair of vertices from v1,v2,v3 is connected.  
@@ -87,7 +83,7 @@ or <center>&ensp; v1,v2,v3 $\in$ V<sub>2</sub></center>
 or <center>&ensp; v1 $\in$ V<sub>2</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>1</sub></center>  
 &emsp;&emsp;&emsp; Graph G will not be bipartite, because any pair of vertices from v1,v2,v3 is connected.  
 &emsp;&emsp;&emsp; Hence, under no circumstance can a graph contains a triangle be bipartite.
-
+<br></br>
 
 ### 5.Must a subgraph of a bipartite graph be bipartite? Would your answer change if, in the definition of a bipartite graph, bipartition sets were required to be nonempty?
 
@@ -104,7 +100,8 @@ or <center>&ensp; v1 $\in$ V<sub>2</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>1</sub
 &emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
 &emsp;&emsp;&emsp; In the subgraph H (W ,F) , if F = $\varnothing$ ,which means every vertices in W is selected from the same set ( either  V<sub>1</sub> or  V<sub>2</sub>).  
 &emsp;&emsp;&emsp; In this way, the bipartition sets of H is empty, which violates the definition of bipartite graph.  
-
+<br></br>
+  
 ### 6.Prove that the number of edges in a bipartite graph with n vertices is n2 at most $\frac{n^2}{2}$_text_
 &emsp;&emsp;&emsp;  The number of edges is at most $\frac{n^2}{4}$ actually.  
 &emsp;&emsp;&emsp; **Proof.**  
@@ -116,7 +113,8 @@ or <center>&ensp; v1 $\in$ V<sub>2</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>1</sub
 &emsp;&emsp;&emsp; That is a quadratic function about k :
 &emsp;&emsp;&emsp; <center>_f ( k ) &ensp; = &ensp;-$k^2$ + nk  _  </center>  
 &emsp;&emsp;&emsp; It has the max value when k = $\frac{n}{2}$ , and the max value is  $\frac{n^2}{4}$
-
+<br></br>
+  
 ### 7.How many complete bipartite graphs have n vertices?
 &emsp;&emsp;&emsp;  If n is even, then there's  $\frac{n}{2}$ different bipartite graphs with n vertices.  
 &emsp;&emsp;&emsp;  If n is odd, then there's  $\frac{n - 1}{2}$ different bipartite graphs with n vertices.  
@@ -124,6 +122,8 @@ or <center>&ensp; v1 $\in$ V<sub>2</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>1</sub
 &emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
 &emsp;&emsp;&emsp;  The amount of vertices |V<sub>1</sub>| or | V<sub>2</sub>| should be at least 1 and at most n - 1 , to make sure each partition has more than one vertex.  
 &emsp;&emsp;&emsp;  So there're totally    $\frac{n}{2}$ different conditions for even vertices and $\frac{n - 1}{2}$ different conditions for odd vertices, to devide n vertices into two nonempty sets.
+<br></br>
+  
 ### 8.Let V = {1, 2,...,n}.
 **&emsp;(a)How many simple graphs are there with vertex set V?**  
 
@@ -176,7 +176,7 @@ $$  </center>
 
 **&emsp;(d)On average, how many triangles does a graph on n labeled vertices contain?**  
 
-&emsp;&emsp;&emsp; The average triangles of a graph on n labeled vertices is $\frac{n( n - 1 )( n - 2) }{48}$.  
+&emsp;&emsp;&emsp; The average triangles of a graph on n labeled vertices is $\frac{n( n - 1 )( n - 2) }{48}$ if n $\geq$ 3.  
 &emsp;&emsp;&emsp; **Proof.**  
 &emsp;&emsp;&emsp; In a labeled vertices graph, the number of graphs should be 2 <sup>$\frac{n(n-1)}{2}$</sup>.  
 &emsp;&emsp;&emsp; Also, the number of triangles of all graphs is $ \frac{n( n - 1 )( n - 2 )}{6}$ $ \times $  2 <sup>$\frac{n(n-1)}{2} -3$</sup>  
@@ -194,14 +194,48 @@ $$  </center>
   \end{matrix}
   \right\} 
 $$  </center> 
+<br></br>
 
 
-
-### 9.What is the largest possible number of vertices in a graph with 35 edges, all vertices having degree at least 3?
+### 9.What is the largest possible number of vertices in a graph with 35 edges, all vertices having degree at least 3?  
+&emsp;&emsp;&emsp; The largest possible number of vertices is 23.  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; According to the Handshaking Theorem:
+&emsp;&emsp;&emsp; <center> 2 $\times$ 35 = $\sum_1^n$ deg(n) </center>  
+&emsp;&emsp;&emsp; That means the less the degrees each vertex has, the more the vertices the graph has.  
+&emsp;&emsp;&emsp; Suppose that each vertex has 3 degrees, then n = $\frac{70}{3}$, which is not an integer, so there must be at least one vertex with 4 degrees.  
+&emsp;&emsp;&emsp; Let k to be the number of vertices with 3 degrees, so (n - k) is the number of vertices with 4 degrees.  
+&emsp;&emsp;&emsp; <center> 2 $\times$ 35 = 3k + 4(n-k)  &ensp;(0 $\leq$ k $\leq$ n) </center>
+&emsp;&emsp;&emsp; That is  <center> n = $\frac{70 + k}{4}$</center>  
+&emsp;&emsp;&emsp; Obviously n will be maximum when _k = n _, so the max value of _n_ is $\frac{70}{3}$.  
+&emsp;&emsp;&emsp; Then we know &ensp;_ k = 4n - 70 $\geq$ 0 _,&ensp; so n $\geq$ $\frac{35}{2}$, and k will be an integer when n is an integer.  
+&emsp;&emsp;&emsp; The solution should be the biggest integer in ( $\frac{35}{2}$, $\frac{70}{3}$), which is 23.
+<br></br>
+  
 ### 10.Suppose all vertices in a graph G have odd degree k. Show that the total number of edges in G is a multiple of k.
+
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp;  Suppose that G = ( V, E ), the number of vertices is n .  
+&emsp;&emsp;&emsp;  According to the Handshaking Theorem:
+&emsp;&emsp;&emsp; _<center> 2 e(G) = kn_ </center>
+&emsp;&emsp;&emsp; That is _<center>  e(G) = $\frac{n}{2}$ $\times$ k_ </center>  
+&emsp;&emsp;&emsp; There 's more than 1 edges in graph G , so  n $\geq$ 2 .  
+&emsp;&emsp;&emsp; The number of vertices with odd degrees is even, so n is even.  
+&emsp;&emsp;&emsp; Hence, $\frac{n}{2}$ is obviously an integer larger than 1.  
+<br></br>
+
+
 ### 11.Can there exist a graph with 13 vertices, 31 edges, 3 vertices of degree 1, and 7 vertices of degree 4? Justify.
 
-
+&emsp;&emsp;&emsp; No, there doesn't exist such a graph.  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; According to the Handshaking Theorem:
+&emsp;&emsp;&emsp; <center> 2 $\times$ 31 =  $\sum_{n=1}^{3}$ deg(n) + 3$\times$1 + 7$\times$4</center>
+&emsp;&emsp;&emsp; That is <center>  31 =  $\sum_{n=1}^{3}$ deg(n)</center>  
+&emsp;&emsp;&emsp; Which means the 3 remaining vertices, v1 v2 and v3 should have 31 degrees in total.  
+&emsp;&emsp;&emsp; But there're 3 vertices with only 1 degree, if none of them are connected to v1 v2 or v3, the max value of total degrees for v1 v2 and v3 is &ensp;_ 9 $\times$ 3 = 27_, because there're only 9 vertices can be connected to  v1 v2 and v3.  
+&emsp;&emsp;&emsp; If all  of them are connected to v1 v2 or v3, the max value of total degrees for v1 v2 or v3 is &ensp; _27 + 3 = 30_, &ensp;which is smaller than 31.  
+&emsp;&emsp;&emsp; So there's no possibility to devide 31 degrees to the 3 vertices remained.
 
 
 [reference manual]: http://research.microsoft.com/en-us/um/people/daan/madoko/doc/reference.html  "Madoko reference manual"
