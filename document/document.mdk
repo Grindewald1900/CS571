@@ -91,25 +91,112 @@ or <center>&ensp; v1 $\in$ V<sub>2</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>1</sub
 
 ### 5.Must a subgraph of a bipartite graph be bipartite? Would your answer change if, in the definition of a bipartite graph, bipartition sets were required to be nonempty?
 
-&emsp;&emsp;&emsp; A subgraph of a bipartite graph may not be bipartite.  
+&emsp;&emsp;&emsp; A subgraph of a bipartite graph must be bipartite.  
 &emsp;&emsp;&emsp; **Proof.**  
 &emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).   
-&emsp;&emsp;&emsp; If the subgraph H (W ,F) ,where  W = V<sub>1</sub> &ensp;and&ensp; F = $\varnothing$.  
-&emsp;&emsp;&emsp; Then H (W ,F) is not bipartite because there's no edge in this graph.  
+&emsp;&emsp;&emsp; In the subgraph H (W ,F) , for every edge e $\in$ F , the two endpoints of e respectively belong to  V<sub>1</sub> and V<sub>2</sub>.  
+&emsp;&emsp;&emsp; So all the vertices in W can be divided into two sets  W<sub>1</sub> , W<sub>2</sub>,&ensp; so that W<sub>1</sub> $\subseteq$ V<sub>1</sub> ,   W<sub>2</sub> $\subseteq$ V<sub>2</sub> .  
+&emsp;&emsp;&emsp; Hence, (W<sub>1</sub> , W<sub>2</sub>) is a bipartition of W, and therefore H (W ,F) should be bipartite.  
+&emsp;&emsp;&emsp;   
 
-&emsp;&emsp;&emsp; If the bipartition sets were required to be nonempty, a subgraph of a bipartite graph must be bipartite.  
+&emsp;&emsp;&emsp; If the bipartition sets were required to be nonempty, a subgraph of a bipartite graph may not be bipartite.  
 &emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that the bipartition sets were required to be nonempty,
-&emsp;&emsp;&emsp; 
-&emsp;&emsp;&emsp; 
-&emsp;&emsp;&emsp; 
+&emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
+&emsp;&emsp;&emsp; In the subgraph H (W ,F) , if F = $\varnothing$ ,which means every vertices in W is selected from the same set ( either  V<sub>1</sub> or  V<sub>2</sub>).  
+&emsp;&emsp;&emsp; In this way, the bipartition sets of H is empty, which violates the definition of bipartite graph.  
+
 ### 6.Prove that the number of edges in a bipartite graph with n vertices is n2 at most $\frac{n^2}{2}$_text_
+&emsp;&emsp;&emsp;  The number of edges is at most $\frac{n^2}{4}$ actually.  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp;  Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
+&emsp;&emsp;&emsp;  And k is the number of vertices in V<sub>1</sub> :
+&emsp;&emsp;&emsp; <center>_|V<sub>1</sub>| = k &ensp; and  &ensp; |V<sub>2</sub>| = n - k_  </center>  
+&emsp;&emsp;&emsp; Obviously the number of edges will be maximum when the graph is complete bipartite.
+&emsp;&emsp;&emsp; <center>_e(G)<sub>max</sub>&ensp; = &ensp; k ( n -k ) &ensp; = &ensp;-$k^2$ + nk  _  </center>  
+&emsp;&emsp;&emsp; That is a quadratic function about k :
+&emsp;&emsp;&emsp; <center>_f ( k ) &ensp; = &ensp;-$k^2$ + nk  _  </center>  
+&emsp;&emsp;&emsp; It has the max value when k = $\frac{n}{2}$ , and the max value is  $\frac{n^2}{4}$
+
 ### 7.How many complete bipartite graphs have n vertices?
+&emsp;&emsp;&emsp;  If n is even, then there's  $\frac{n}{2}$ different bipartite graphs with n vertices.  
+&emsp;&emsp;&emsp;  If n is odd, then there's  $\frac{n - 1}{2}$ different bipartite graphs with n vertices.  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
+&emsp;&emsp;&emsp;  The amount of vertices |V<sub>1</sub>| or | V<sub>2</sub>| should be at least 1 and at most n - 1 , to make sure each partition has more than one vertex.  
+&emsp;&emsp;&emsp;  So there're totally    $\frac{n}{2}$ different conditions for even vertices and $\frac{n - 1}{2}$ different conditions for odd vertices, to devide n vertices into two nonempty sets.
 ### 8.Let V = {1, 2,...,n}.
 **&emsp;(a)How many simple graphs are there with vertex set V?**  
+
+&emsp;&emsp;&emsp; Totally 2 <sup>n(n-1)</sup>  graphs if the vertices are unlabeled.   
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; The number of different vertex pair in n vertices is n(n-1).  
+&emsp;&emsp;&emsp; And there should be 0 or 1 egde between every vertex pair because it's a  simple graph.  That means there're totally 2 relations between each vertices pair.   
+&emsp;&emsp;&emsp; So the number of different simple graphs with n vertices is 2 <sup>n(n-1)</sup> .  
+&emsp;&emsp;&emsp; <center>$$
+ \left\{
+ \begin{matrix}
+   0 & ... & ... & ... & n\\
+   ... & 0 & ... & ... & n\\
+   ... & ... & 0 & ... & n\\
+   ... & ... & ... & 0 \\
+   n & n & n & ... & 0
+  \end{matrix}
+  \right\} 
+$$  </center>  
+
 **&emsp;(b)How many of these graphs contain the triangle 123?**  
+
+&emsp;&emsp;&emsp; Totally 2 <sup>n(n-1) - 6</sup> graphs.  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; As is proved above,  the number of different graphs with n vertices is 2 <sup>n(n-1)</sup>.  
+&emsp;&emsp;&emsp; If 123 is a triangle, that means every vertex pair from (1，2，3) is adjacent, that is (1,2) , (2,1) , (1,3) , (3,1), (2,3) and (3,2) is 1.  
+&emsp;&emsp;&emsp; That means the exponent of 2 <sup>n(n-1)</sup> should minus 3, because there's only one possible result for that 3 vertex pairs.
+&emsp;&emsp;&emsp; <center>$$
+ \left\{
+ \begin{matrix}
+   0 & 1 & 1 & ... & n\\
+   1 & 0 & 1 & ... & n\\
+   1 & 1 & 0 & ... & n\\
+   ... & ... & ... & 0 \\
+   n & n & n & ... & 0
+  \end{matrix}
+  \right\} 
+$$  </center>  
+
+
 **&emsp;(c)What is the total number of triangles in all the graphs with vertex set V?**  
+
+&emsp;&emsp;&emsp; Totally &ensp; n( n - 1 )( n - 2 ) $\times$ 2 <sup>n(n-1) - 6</sup> &ensp;triangles  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; The number of total possible triangles with set V is n( n - 1 )( n - 2 ).  
+&emsp;&emsp;&emsp; That's equal to the condition when we choose 3 different numbers from n numbers.  
+&emsp;&emsp;&emsp; Then each triangle can be contained in 2<sup>n(n-1) - 6</sup> different graphs, and that's what we have proved above.  
+&emsp;&emsp;&emsp; So the total number is the product of &ensp; n( n - 1 )( n - 2 ) and 2 <sup>n(n-1) - 6</sup>  .  
+
+
 **&emsp;(d)On average, how many triangles does a graph on n labeled vertices contain?**  
+
+&emsp;&emsp;&emsp; The average triangles of a graph on n labeled vertices is $\frac{n( n - 1 )( n - 2) }{48}$.  
+&emsp;&emsp;&emsp; **Proof.**  
+&emsp;&emsp;&emsp; In a labeled vertices graph, the number of graphs should be 2 <sup>$\frac{n(n-1)}{2}$</sup>.  
+&emsp;&emsp;&emsp; Also, the number of triangles of all graphs is $ \frac{n( n - 1 )( n - 2 )}{6}$ $ \times $  2 <sup>$\frac{n(n-1)}{2} -3$</sup>  
+&emsp;&emsp;&emsp; So the average number of triangles should be the quotient of the two polynomials above.  
+&emsp;&emsp;&emsp; That is  $ \frac{n( n - 1 )( n - 2 )}{6}$ $ \times $  2 <sup>$\frac{n(n-1)}{2} -3$</sup> $ \div $  2 <sup>$\frac{n(n-1)}{2}$</sup>  
+&emsp;&emsp;&emsp; The result is $\frac{n( n - 1 )( n - 2) }{48}$.
+&emsp;&emsp;&emsp; <center>$$
+ \left\{
+ \begin{matrix}
+   0 & 1 & 1 & ... & n\\
+     & 0 & 1 & ... & n\\
+     &   & 0 & ... & n\\
+     &   &   & 0 \\
+     &   &   &     & 0
+  \end{matrix}
+  \right\} 
+$$  </center> 
+
+
+
 ### 9.What is the largest possible number of vertices in a graph with 35 edges, all vertices having degree at least 3?
 ### 10.Suppose all vertices in a graph G have odd degree k. Show that the total number of edges in G is a multiple of k.
 ### 11.Can there exist a graph with 13 vertices, 31 edges, 3 vertices of degree 1, and 7 vertices of degree 4? Justify.
