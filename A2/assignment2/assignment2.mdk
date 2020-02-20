@@ -31,249 +31,179 @@ do |E| times calculations to figure out the cost.
 &emsp;&emsp;&emsp; For a digraph, the number of the in-degree is equal to that of the out-degree.
 
 ### The transpose of a directed graph G = (V, E) is the graph GT = (V, Et) where ET = {(v, u) e V x V : (u,v) G E}. Thus, GT is G with all its edges reversed.
-&emsp;**(a)Give the cost of computing the out-degree of every vertex.**  
-&emsp;&emsp;&emsp; The cost is |E|.  
-&emsp;&emsp;&emsp; Suppose that the graph G(V ,E) has a list representation which has |V| lists, and the length of 
-the lists is |E|. So the cost is |E| because the sum of the out-degree is equal to the sum of the edges, we need to 
-do |E| times calculations to figure out the cost.  
+&emsp;**(a)Describe efficient algorithms for computing GT from G, for both the adiacencv-list and adiacencv-matrix representations of G.**  
+&emsp;&emsp;&emsp; Suppose that the vertex set V includes n vertices v1,v2... vn.  
+&emsp;&emsp;&emsp; For the adjacency-list, we need to check every edge e(u,v) $\in$ E to determine one list.
+For example, to compute v1 list, we should check all the edges to find out every edge that has an end point v1, and 
+then put it's start point in the list. In this way , the cost of computation should be |E|$\times$|V|.  
+&emsp;&emsp;&emsp; For the adjacency-matrix, the only thing we need to do is changing the value of entry<sub>ij</sub>
+and  entry<sub>ji</sub> ( 1 $\leq$ i < j  $\leq$ n ), so the cost will be $\frac{|V|(|V| - 1)}{2}$.
 
-&emsp;**(b)What is the cost of the previous operation if each list stores its length?**  
-&emsp;&emsp;&emsp; The cost is |V|.  
-&emsp;&emsp;&emsp; The only calculation is to add up all the lengths for each list, and the number of the lists is |V|.
-
-&emsp;**(c)What is the cost of computing the in-degrees?**  
-&emsp;&emsp;&emsp; The cost is |E|.  
-&emsp;&emsp;&emsp; For a digraph, the number of the in-degree is equal to that of the out-degree.
+&emsp;**(b)Analyze the running times of your algorithms.**  
+&emsp;&emsp;&emsp;  As is mentioned above, the running time for the adjacency-list representation is |E|$\times$|V|
+while the adjacency-matrix is  $\frac{|V| ( |V| - 1 )}{2}$.  
 
 
+### The complement graph of a simple graph G = (V, E) is the graph $\overrightarrow{G}$ = (V,E), where 
+~ Center
+E = {(u,v) G V x V : (u,v) G E}.
+~
+**Thus, two vertices are adjacent in G if and only if they are not adjacent in G.**  
+&emsp;** (a)Describe efficient algorithms for computing G from G, for both the adiacencv-list and adiacencv-matrix representations of G.**  
+&emsp;&emsp;&emsp; Suppose that the vertex set V includes n vertices v1,v2... vn.  
+&emsp;&emsp;&emsp; For the adjacency-list, if a vertex is neither in the adjacency-list of G nor the vertex itself, we put it in the 
+adjacency-list of $\overrightarrow{G}$. For example , if we have 4 vertices V1 V2 V3 V4, the adiacencv-list of G is as below:
+<center>
+<table>
+        <tr>
+            <th>Initial Vertex</th>
+            <th>Terminal Vertex</th>
+        </tr>
+        <tr>
+            <th>V1</th>
+            <th>V4</th>
+        </tr>
+        <tr>
+            <th>V2</th>
+            <th>V3 V4</th>
+        </tr>
+        <tr>
+            <th>V3</th>
+            <th>V2</th>
+        </tr>
+        <tr>
+            <th>V4</th>
+            <th>V1 V2</th>
+        </tr>
+    </table></center>
+    
+&emsp;&emsp;&emsp; To figure out the list of V1 in $\overrightarrow{G}$, we need to check if V2 V3 and V4 are in the list above, considering V4
+is in the list, we put V2 and V3 in the new list.  
+&emsp;&emsp;&emsp; For the adjacency-matrix, we need to check every entry<sub>ij</sub> (i $\neq$ j), and reverse it's 
+value between 0 and 1.
+
+&emsp;**(b)Analyze the running times of your algorithms.**  
+&emsp;&emsp;&emsp;  As is mentioned above, the running time for the adjacency-list representation is |V| $\times$ (|V| - 1)
+and the adjacency-matrix is also |V| $\times$ (|V| - 1).
+
+###4.Let G = (V, E) be a simple graph and G = (V, E) its complement. If |E| = 56 and |E'| = 80, find the value of |V|.
+&emsp;&emsp;&emsp; |V| = 17  
+&emsp;&emsp;&emsp; Suppose that G has n vertices, G<sub>2</sub> = (V, E $\cup$ E') will be the complete graph with these n vertices.
+The number of edges for G<sub>2</sub> is  $\frac{n ( n - 1 )}{2}$, so we have :
+~ Center
+_56 + 80 = $\frac{n ( n - 1 )}{2}$_
+~
+&emsp;&emsp;&emsp; So, n = 17 or n = -16.   
+&emsp;&emsp;&emsp; Considering that n is a positive integer , n = 17. 
 
 
 
+###How much storage is needed to represent a simple graph with n vertices and m edges using
+**(a)adjacency lists?**  
+&emsp;&emsp;&emsp;Memory space : m + n   
 
+**(b)an adjacency matrix?**  
+&emsp;&emsp;&emsp;Memory space : n<sup>2</sup>  
 
-&emsp;&emsp;&emsp; No, there doesn't exist such a graph.   
-&emsp;&emsp;&emsp; **Proof.**   
-&emsp;&emsp;&emsp; The complete graph K<sub>5</sub> has the most edges for a graph with 5 vertices.  
-The number of edges for K<sub>5</sub> is 10, which is less than 12.
-&emsp;&emsp;&emsp;<center> _e(K<sub>5</sub>) = (5 $\times$ 4)&nbsp;/&nbsp;2 = 10_ </center> 
+**(c)an incidence matrix?**  
+&emsp;&emsp;&emsp;Memory space : m $\times$ n
   
-**&emsp;(b)A simple graph in which each vertex has degree 3 and which has exactly 6 edges.**
 
-&emsp;&emsp;&emsp; Yes, there does.   
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that G = (V,E) has n vertices, according to The Handshaking Theorem:
-&emsp;&emsp;&emsp;<center> _2 $\times$ e &nbsp; =&nbsp; 3 $\times$ n_  </center>
-&emsp;&emsp;&emsp; In this case,&ensp; e = 6 ,&ensp; n = 4.  
-&emsp;&emsp;&emsp; Actually, that is a 4 vertices complete graph.
-
-**&emsp;(c)A simple graph with five vertices with degrees 2, 3, 3, 3, and 2.**  
-
-&emsp;&emsp;&emsp; No, there doesn't exist such a graph.   
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that graph G has 5 vertices with degrees 2, 3, 3, 3, and 2.  
-&emsp;&emsp;&emsp; The number of edges for G is 6.5,&ensp;which is not an integer,&ensp;and that is not possible.
-&emsp;&emsp;&emsp; <center> _e(G) = (2+2+3+3+3)/2 = 6.5 _ </center>   
-&emsp;&emsp;&emsp; Also we can prove it according to Corollary 1.12：  
-&emsp;&emsp;&emsp; _An undirected graph has an even number of vertices of odd degree. _  
-&emsp;&emsp;&emsp; The number of vertices with odd degree in this graph is 3，which is obviously contrary to the corollary.  
-<br></br>
-
-
-### 2.Does there exist a simple graph G with 28 edges and 12 vertices, each of degree 3 or 4?
-
-&emsp;&emsp;&emsp; No, there doesn't exist such a graph.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that G = ( V, E ) has 12 vertices, and every vertex has 4 degrees, the number of edges for graph G will be maximum.
-&emsp;&emsp;&emsp;<center> _e(G)<sub>max</sub> = (12 $\times$ 4)/2 = 24 _  </center>  
-&emsp;&emsp;&emsp; Obviously , 28 is larger than 24，so it's impossible for graph G to have 28 edges.
-<br></br>  
+###Determine whether each pair of graphs below is isomorphic. Exhibit an isomorphism or provide a rigorous argument that none exists.  
   
-### 3.Does there exist a simple graph G with 28 edges and 12 vertices, each of degree 3 or 6?
+![图片1]
 
-&emsp;&emsp;&emsp; No, there doesn't exist such a graph.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that G = ( V, E ) has 12 vertices, and every vertex has 3 degrees, we can get the minimum number of edges for graph G .
-&emsp;&emsp;&emsp;<center> _e(G)<sub>min</sub> = (12 $\times$ 3)/2 = 18 _  </center>  
-&emsp;&emsp;&emsp; If every vertex has 6 degrees, we can get the maximum number of edges for graph G.
-&emsp;&emsp;&emsp;<center> _e(G)<sub>max</sub> = (12 $\times$ 6)/2 = 36 _  </center>  
-&emsp;&emsp;&emsp; Obviously, <center> e(G)<sub>min</sub> $\leq$ 28 $\leq$ e(G)<sub>max</sub> </center>  
-&emsp;&emsp;&emsp; So it's possible for graph G to have 28 edges.  
-&emsp;&emsp;&emsp; Then suppose the number of vertices with 3 degrees is n, then the number of 6 degrees is (12 - n ).  
-&emsp;&emsp;&emsp;<center> _$\frac{3n + 6(12 - n)}{2}$ = 28_  </center>  
-&emsp;&emsp;&emsp; So n = $\frac{16}{3}$ , which is not an integer, thus there doesn't exist such a graph.
-<br></br>
+[图片1]: images/-1.png "图片1" { width:auto; max-width:90% }
 
-### 4.Prove that a graph that contains a triangle cannot be bipartite.  
+&emsp;&emsp;&emsp;It's not isomorphic because G2 has a vertex with 4 degrees while G1 doesn't.  
 
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that G = ( V, E ),&ensp; v1,v2,v3 are the three vertices of the triangle, V<sub>1</sub> and V<sub>2</sub> are two disjoint sets partitioned from V.  
-&emsp;&emsp;&emsp; If all of the three vertices are in the same set :<center>&ensp;v1,v2,v3 $\in$ V<sub>1</sub></center>
-or <center>&ensp; v1,v2,v3 $\in$ V<sub>2</sub></center>
-&emsp;&emsp;&emsp; Graph G will not be bipartite, because any pair of vertices from v1,v2,v3 is connected.  
+![图片2]
+ 
 
-&emsp;&emsp;&emsp; If the three vertices are divided into two parts, one in V<sub>1</sub> and the other in V<sub>2</sub> , for example :  
-&emsp;&emsp;&emsp; <center>&ensp;v1 $\in$ V<sub>1</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>2</sub></center> 
-or <center>&ensp; v1 $\in$ V<sub>2</sub>&ensp;and &ensp;v2,v3 $\in$ V<sub>1</sub></center>  
-&emsp;&emsp;&emsp; Graph G will not be bipartite, because any pair of vertices from v1,v2,v3 is connected.  
-&emsp;&emsp;&emsp; Hence, under no circumstance can a graph contains a triangle be bipartite.
-<br></br>
-
-### 5.Must a subgraph of a bipartite graph be bipartite? Would your answer change if, in the definition of a bipartite graph, bipartition sets were required to be nonempty?
-
-&emsp;&emsp;&emsp; A subgraph of a bipartite graph must be bipartite.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).   
-&emsp;&emsp;&emsp; In the subgraph H (W ,F) , if F $\not=$ $\varnothing$ ：  
-&emsp;&emsp;&emsp; For every edge e $\in$ F , the two endpoints of e respectively belong to  V<sub>1</sub> and V<sub>2</sub>.  
-&emsp;&emsp;&emsp; So all the vertices in W can be divided into two sets  W<sub>1</sub> , W<sub>2</sub>,&ensp; so that W<sub>1</sub> $\subseteq$ V<sub>1</sub> ,   W<sub>2</sub> $\subseteq$ V<sub>2</sub> .  
-&emsp;&emsp;&emsp; IF F = $\varnothing$ , which means there's no edge in subgraph H. So it's also coincident with the definition of bipartite graph.  &emsp;&emsp;&emsp;   
-&emsp;&emsp;&emsp; Hence, (W<sub>1</sub> , W<sub>2</sub>) is a bipartition of W, and therefore H (W ,F) should be bipartite.  
-&emsp;&emsp;&emsp;   
-
-&emsp;&emsp;&emsp; If the bipartition sets were required to be nonempty, a subgraph of a bipartite graph may not be bipartite.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
-&emsp;&emsp;&emsp; In the subgraph H (W ,F) , if F = $\varnothing$ ,which means every vertices in W is selected from the same set ( either  V<sub>1</sub> or  V<sub>2</sub>).  
-&emsp;&emsp;&emsp; In this way, the bipartition sets of H is empty, which violates the definition of bipartite graph.  
-<br></br>
-  
-### 6.Prove that the number of edges in a bipartite graph with n vertices is n2 at most $\frac{n^2}{2}$_text_
-&emsp;&emsp;&emsp;  The number of edges is at most $\frac{n^2}{4}$ actually.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp;  Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
-&emsp;&emsp;&emsp;  And k is the number of vertices in V<sub>1</sub> :
-&emsp;&emsp;&emsp; <center>_|V<sub>1</sub>| = k &ensp; and  &ensp; |V<sub>2</sub>| = n - k_  </center>  
-&emsp;&emsp;&emsp; Obviously the number of edges will be maximum when the graph is complete bipartite.
-&emsp;&emsp;&emsp; <center>_e(G)<sub>max</sub>&ensp; = &ensp; k ( n -k ) &ensp; = &ensp;-$k^2$ + nk  _  </center>  
-&emsp;&emsp;&emsp; That is a quadratic function about k :
-&emsp;&emsp;&emsp; <center>_f ( k ) &ensp; = &ensp;-$k^2$ + nk  _  </center>  
-&emsp;&emsp;&emsp; It has the max value when k = $\frac{n}{2}$ , and the max value is  $\frac{n^2}{4}$
-<br></br>
-  
-### 7.How many complete bipartite graphs have n vertices?
-&emsp;&emsp;&emsp;  If n is even, then there's  $\frac{n}{2}$ different bipartite graphs with n vertices.  
-&emsp;&emsp;&emsp;  If n is odd, then there's  $\frac{n - 1}{2}$ different bipartite graphs with n vertices.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; Suppose that the pair ( V<sub>1</sub>，V<sub>2</sub>) a bipartition of V of G (V , E).  
-&emsp;&emsp;&emsp;  The amount of vertices |V<sub>1</sub>| or | V<sub>2</sub>| should be at least 1 and at most n - 1 , to make sure each partition has more than one vertex.  
-&emsp;&emsp;&emsp;  So there're totally    $\frac{n}{2}$ different conditions for even vertices and $\frac{n - 1}{2}$ different conditions for odd vertices, to devide n vertices into two nonempty sets.
-<br></br>
-  
-### 8.Let V = {1, 2,...,n}.
-**&emsp;(a)How many simple graphs are there with vertex set V?**  
-
-&emsp;&emsp;&emsp; I think the description of this question is ambiguous, because it doesn't clarify if the vertex set is labeled.  
-&emsp;&emsp;&emsp; Totally 2 <sup>$\frac{n(n-1)}{2}$</sup>  graphs if the vertices are labeled.   
-
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; The number of different vertex pair in n vertices is $\frac{n(n-1)}{2}$.  
-&emsp;&emsp;&emsp; And there should be 0 or 1 egde between every vertex pair because it's a  simple graph.  That means there're totally 2 relations between each vertices pair.   
-&emsp;&emsp;&emsp; So the number of different simple graphs with n vertices is 2 <sup>$\frac{n(n-1)}{2}$</sup>.  
+[图片2]: images/-2.png "图片2" { width:auto; max-width:90% }
+&emsp;&emsp;&emsp;It is isomorphic, and the bijection is as below:
+<center>
+<table>
+        <tr><th>G1 </th><th>G2</th></tr>
+        <tr><th>------</th><th>------</th></tr>
+        <tr>
+            <th>U1</th>
+            <th>V4</th>
+        </tr>
+        <tr>
+            <th>U2</th>
+            <th>V3</th>
+        </tr>
+        <tr>
+            <th>U3</th>
+            <th>V6</th>
+        </tr>
+        <tr>
+            <th>U4</th>
+            <th>V5</th>
+        </tr>
+        <tr>
+            <th>U5</th>
+            <th>V1</th>
+        </tr>
+        <tr>
+            <th>U6</th>
+            <th>V2</th>
+        </tr>
+    </table></center>
+&emsp;&emsp;&emsp;The adjacency matrix is :
 &emsp;&emsp;&emsp; <center>$$
  \left\{
  \begin{matrix}
-   0 &   &   & ... & n\\
-     & 0 &   & ... & n\\
-     &   & 0 & ... & n\\
-     &   &   & 0 \\
-     &   &   &     & 0
+   0 & 1 & 0 & 1 & 0 & 0\\
+   1 & 0 & 1 & 0 & 0 & 1\\
+   0 & 1 & 0 & 1 & 0 & 0\\
+   1 & 0 & 1 & 0 & 1 & 1\\
+   0 & 0 & 0 & 1 & 0 & 1\\
+   0 & 1 & 0 & 1 & 1 & 0\\
   \end{matrix}
-  \right\} 
+  \right\}   G1
 $$  </center> 
-<br></br>
-
-**&emsp;(b)How many of these graphs contain the triangle 123?**  
-
-&emsp;&emsp;&emsp; Totally 2 <sup>$\frac{n(n-1)}{2}$ - 3</sup> graphs.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; As is proved above,  the number of different graphs with n vertices is 2 <sup>$\frac{n(n-1)}{2}$ .</sup>  
-&emsp;&emsp;&emsp; If 123 is a triangle, that means every vertex pair from (1，2，3) is adjacent, so the item  (1,2), (1,3)  and (2,3) in the adjacency matrix is 1.  
-&emsp;&emsp;&emsp; That means the exponent of 2 <sup>n(n-1)</sup> should minus 3, because there's only one possible result for that 3 vertex pairs.
 &emsp;&emsp;&emsp; <center>$$
  \left\{
  \begin{matrix}
-   0 & 1 & 1 & ... & n\\
-     & 0 & 1 & ... & n\\
-     &   & 0 & ... & n\\
-     &   &   & 0 \\
-     &   &   & ... & 0
+   0 & 1 & 0 & 1 & 0 & 0\\
+   1 & 0 & 1 & 0 & 0 & 1\\
+   0 & 1 & 0 & 1 & 0 & 0\\
+   1 & 0 & 1 & 0 & 1 & 1\\
+   0 & 0 & 0 & 1 & 0 & 1\\
+   0 & 1 & 0 & 1 & 1 & 0\\
   \end{matrix}
-  \right\} 
-$$  </center>  
-
-
-**&emsp;(c)What is the total number of triangles in all the graphs with vertex set V?**  
-
-&emsp;&emsp;&emsp; Totally &ensp;$\frac {n( n - 1 )( n - 2 )}{6}$ $\times$  2 <sup>$\frac{n(n-1)}{2}$ - 3</sup>  &ensp;triangles  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; The number of total possible triangles with set V is $\frac {n( n - 1 )( n - 2 )}{6}$  
-&emsp;&emsp;&emsp; That's equal to the condition when we choose 3 different numbers from n numbers.  
-&emsp;&emsp;&emsp; Then each triangle can be contained in  2 <sup>$\frac{n(n-1)}{2}$ - 3</sup> different graphs, and that's what we have proved above.  
-&emsp;&emsp;&emsp; So the total number is the product of &ensp;$\frac {n( n - 1 )( n - 2 )}{6}$ and 2 <sup>$\frac{n(n-1)}{2}$ - 3</sup>   .  
-
-
-**&emsp;(d)On average, how many triangles does a graph on n labeled vertices contain?**  
-
-&emsp;&emsp;&emsp; The average triangles of a graph on n labeled vertices is $\frac{n( n - 1 )( n - 2) }{48}$ if n $\geq$ 3.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; In a labeled vertices graph, the number of graphs should be 2 <sup>$\frac{n(n-1)}{2}$</sup>.  
-&emsp;&emsp;&emsp; Also, the number of triangles of all graphs is $ \frac{n( n - 1 )( n - 2 )}{6}$ $ \times $  2 <sup>$\frac{n(n-1)}{2} -3$</sup>  
-&emsp;&emsp;&emsp; So the average number of triangles should be the quotient of the two polynomials above.  
-&emsp;&emsp;&emsp; That is  $ \frac{n( n - 1 )( n - 2 )}{6}$ $ \times $  2 <sup>$\frac{n(n-1)}{2} -3$</sup> $ \div $  2 <sup>$\frac{n(n-1)}{2}$</sup>  
-&emsp;&emsp;&emsp; The result is $\frac{n( n - 1 )( n - 2) }{48}$.
-&emsp;&emsp;&emsp; <center>$$
- \left\{
- \begin{matrix}
-   0 & 1 & 1 & ... & n\\
-     & 0 & 1 & ... & n\\
-     &   & 0 & ... & n\\
-     &   &   & 0 \\
-     &   &   &     & 0
-  \end{matrix}
-  \right\} 
+  \right\}   G2
 $$  </center> 
-<br></br>
+
+&emsp;&emsp;&emsp; It's obviously that two graphs are isomorphic.
 
 
-### 9.What is the largest possible number of vertices in a graph with 35 edges, all vertices having degree at least 3?  
-&emsp;&emsp;&emsp; The largest possible number of vertices is 23.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; According to the Handshaking Theorem:
-&emsp;&emsp;&emsp; <center> 2 $\times$ 35 = $\sum_1^n$ deg(n) </center>  
-&emsp;&emsp;&emsp; That means the less the degrees each vertex has, the more the vertices the graph has.  
-&emsp;&emsp;&emsp; Suppose that each vertex has 3 degrees, then n = $\frac{70}{3}$, which is not an integer, so there must be at least one vertex with 4 degrees.  
-&emsp;&emsp;&emsp; Let k to be the number of vertices with 3 degrees, so (n - k) is the number of vertices with 4 degrees.  
-&emsp;&emsp;&emsp; <center> 2 $\times$ 35 = 3k + 4(n-k)  &ensp;(0 $\leq$ k $\leq$ n) </center>
-&emsp;&emsp;&emsp; That is  <center> n = $\frac{70 + k}{4}$</center>  
-&emsp;&emsp;&emsp; Obviously n will be maximum when _k = n _, so the max value of _n_ is $\frac{70}{3}$.  
-&emsp;&emsp;&emsp; Then we know &ensp;_ k = 4n - 70 $\geq$ 0 _,&ensp; so n $\geq$ $\frac{35}{2}$, and k will be an integer when n is an integer.  
-&emsp;&emsp;&emsp; The solution should be the biggest integer in ( $\frac{35}{2}$, $\frac{70}{3}$), which is 23.
-<br></br>
+###Suppose that G and H are isomorphic simple graphs. Show that their complement graphs G and H are also isomorphic.  
+&emsp;&emsp;&emsp; G and H are isomophic so that they have the same adjacency matrix, hence the complement graphs 
+of G and H will also have the same adjacency matrix, because we conversed all the entries.In this way, the complement graphs 
+are isomorphic.  
+
+###Show that the property that a graph is bipartite is an isomorphic in-variant.
+&emsp;&emsp;&emsp; Suppose the graph G = (V , E ) and it's isomorphic graph H = (W ,F ), f is the bijection from V to W.  
+&emsp;&emsp;&emsp; If G is bipartite, let (V<sub>1</sub>，V<sub>2</sub>) a bipartition of G, then we divide W into two parts W<sub>1</sub> and W<sub>2</sub>.
+ Let W<sub>1</sub> = f (V<sub>1</sub>), W<sub>2</sub> = f(V<sub>2</sub>).  
+&emsp;&emsp;&emsp; For every edge e (u, v)  $\in$ E , we have u  $\in$ V<sub>1</sub> and v  $\in$ V<sub>2</sub>.  
+&emsp;&emsp;&emsp; hence f(u) $\in$ W<sub>1</sub> and f(v) $\in$ W<sub>2</sub>, which means every edge in F will 
+have the start point in W<sub>1</sub> and end point in W<sub>2</sub>.  
+&emsp;&emsp;&emsp; So (W<sub>1</sub>, W<sub>2</sub> ) is the bipartition for graph H , and H is also bipartite.
+
+
+###The degree sequence of a graph is the sequence of the degrees of the vertices of the graph in non-increasing order. Find a pair of non-isomorphic graphs with the same degree sequence such that one graph is bipartite, but the other graph is not bipartite.  
+&emsp;&emsp;&emsp;
+
+&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; ![未命名文件]
+   
+
+[未命名文件]: images/-.png "未命名文件" { width:auto; max-width:60% }
+
+
+<br>  
   
-### 10.Suppose all vertices in a graph G have odd degree k. Show that the total number of edges in G is a multiple of k.
-
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp;  Suppose that G = ( V, E ), the number of vertices is n .  
-&emsp;&emsp;&emsp;  According to the Handshaking Theorem:
-&emsp;&emsp;&emsp; _<center> 2 e(G) = kn_ </center>
-&emsp;&emsp;&emsp; That is _<center>  e(G) = $\frac{n}{2}$ $\times$ k_ </center>  
-&emsp;&emsp;&emsp; There 's more than 1 edges in graph G , so  n $\geq$ 2 .  
-&emsp;&emsp;&emsp; The number of vertices with odd degrees is even, so n is even.  
-&emsp;&emsp;&emsp; Hence, $\frac{n}{2}$ is obviously an integer larger than 1.  
-<br></br>
-
-
-### 11.Can there exist a graph with 13 vertices, 31 edges, 3 vertices of degree 1, and 7 vertices of degree 4? Justify.
-
-&emsp;&emsp;&emsp; No, there doesn't exist such a graph.  
-&emsp;&emsp;&emsp; **Proof.**  
-&emsp;&emsp;&emsp; According to the Handshaking Theorem:
-&emsp;&emsp;&emsp; <center> 2 $\times$ 31 =  $\sum_{n=1}^{3}$ deg(n) + 3$\times$1 + 7$\times$4</center>
-&emsp;&emsp;&emsp; That is <center>  31 =  $\sum_{n=1}^{3}$ deg(n)</center>  
-&emsp;&emsp;&emsp; Which means the 3 remaining vertices, v1 v2 and v3 should have 31 degrees in total.  
-&emsp;&emsp;&emsp; But there're 3 vertices with only 1 degree, if none of them are connected to v1 v2 or v3, the max value of total degrees for v1 v2 and v3 is &ensp;_ 9 $\times$ 3 = 27_, because there're only 9 vertices can be connected to  v1 v2 and v3.  
-&emsp;&emsp;&emsp; If all  of them are connected to v1 v2 or v3, the max value of total degrees for v1 v2 or v3 is &ensp; _27 + 3 = 30_, &ensp;which is smaller than 31.  
-&emsp;&emsp;&emsp; So there's no possibility to devide 31 degrees to the 3 vertices remained.
-
-
-[reference manual]: http://research.microsoft.com/en-us/um/people/daan/madoko/doc/reference.html  "Madoko reference manual"
+ </br>
