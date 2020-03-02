@@ -198,10 +198,11 @@ have the start point in W<sub>1</sub> and end point in W<sub>2</sub>.
 ###The degree sequence of a graph is the sequence of the degrees of the vertices of the graph in non-increasing order. Find a pair of non-isomorphic graphs with the same degree sequence such that one graph is bipartite, but the other graph is not bipartite.  
 &emsp;&emsp;&emsp;
 
-&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; ![未命名文件]
-   
+&emsp;&emsp;&emsp; &emsp;&emsp;&emsp; 
+![未命名文件]
 
-[未命名文件]: images/-.png "未命名文件" { width:auto; max-width:60% }
+[未命名文件]: images/-.png "未命名文件" { width:auto; max-width:90% }
+
 
 
 <br>  
